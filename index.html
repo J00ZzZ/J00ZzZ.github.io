@@ -6,429 +6,7 @@
 <title>Joel Liau Yu Herng — Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f2f2f7;
-    --card: rgba(255,255,255,0.72);
-    --card-2: rgba(255,255,255,0.55);
-    --blur: blur(20px);
-    --border: rgba(0,0,0,0.08);
-    --text-primary: #1c1c1e;
-    --text-secondary: #3a3a3c;
-    --text-tertiary: #6c6c70;
-    --blue: #007aff;
-    --green: #34c759;
-    --orange: #ff9500;
-    --purple: #af52de;
-    --pink: #ff2d55;
-    --teal: #5ac8fa;
-    --indigo: #5856d6;
-    --separator: rgba(60,60,67,0.13);
-    --shadow: 0 2px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
-    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* Wallpaper background */
-  .wallpaper {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #533483 100%);
-    z-index: -2;
-  }
-  .wallpaper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 50%, rgba(83,52,131,0.6) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(0,122,255,0.4) 0%, transparent 40%),
-      radial-gradient(ellipse at 60% 80%, rgba(52,199,89,0.2) 0%, transparent 40%);
-  }
-
-  .page {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 60px 16px 80px;
-  }
-
-  /* Status bar */
-  .status-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px 8px;
-    color: white;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    max-width: 680px;
-    margin: 0 auto;
-  }
-  .status-time { font-size: 15px; font-weight: 700; }
-  .status-icons { display: flex; gap: 6px; align-items: center; }
-  .status-icons svg { width: 16px; height: 12px; fill: white; }
-
-  /* Header card — profile */
-  .profile-card {
-    background: var(--card);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border-radius: 22px;
-    border: 0.5px solid rgba(255,255,255,0.5);
-    box-shadow: var(--shadow-lg);
-    padding: 28px 24px 24px;
-    margin-bottom: 12px;
-    animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  }
-
-  .profile-top {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 16px;
-  }
-
-  .avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #007aff, #5856d6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
-    flex-shrink: 0;
-    box-shadow: 0 4px 16px rgba(0,122,255,0.4);
-    letter-spacing: -1px;
-  }
-
-  .profile-info h1 {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--text-primary);
-    line-height: 1.1;
-  }
-  .profile-info .role {
-    font-size: 13px;
-    color: var(--blue);
-    font-weight: 600;
-    margin-top: 3px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .available-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(52,199,89,0.12);
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 20px;
-    margin-top: 6px;
-    letter-spacing: 0.02em;
-  }
-  .available-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  .bio {
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--text-secondary);
-    border-top: 0.5px solid var(--separator);
-    padding-top: 14px;
-  }
-
-  /* Contact row */
-  .contact-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .contact-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(0,122,255,0.1);
-    color: var(--blue);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .contact-chip:hover { background: rgba(0,122,255,0.18); }
-  .contact-chip svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
-
-  /* Section label */
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.55);
-    padding: 16px 6px 6px;
-    animation: fadeIn 0.4s ease both;
-  }
-
-  /* Card base */
-  .card {
-    background: var(--card);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border-radius: 16px;
-    border: 0.5px solid rgba(255,255,255,0.45);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    margin-bottom: 12px;
-    animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  }
-
-  /* List rows */
-  .list-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 14px 18px;
-    border-bottom: 0.5px solid var(--separator);
-    transition: background 0.1s;
-  }
-  .list-row:last-child { border-bottom: none; }
-  .list-row:active { background: rgba(0,0,0,0.04); }
-
-  .row-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .row-content { flex: 1; min-width: 0; }
-  .row-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.25;
-  }
-  .row-subtitle {
-    font-size: 12.5px;
-    color: var(--text-secondary);
-    margin-top: 2px;
-    font-weight: 500;
-  }
-  .row-date {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    white-space: nowrap;
-    margin-top: 2px;
-    font-weight: 400;
-  }
-  .row-detail {
-    font-size: 12.5px;
-    color: var(--text-secondary);
-    margin-top: 6px;
-    line-height: 1.5;
-  }
-
-  /* Bullets */
-  .bullet-list {
-    margin-top: 6px;
-    padding-left: 0;
-    list-style: none;
-  }
-  .bullet-list li {
-    font-size: 12px;
-    color: var(--text-secondary);
-    padding: 2px 0 2px 14px;
-    position: relative;
-    line-height: 1.45;
-  }
-  .bullet-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--blue);
-    font-weight: 700;
-  }
-
-  /* Chevron */
-  .chevron {
-    color: var(--text-tertiary);
-    font-size: 13px;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  /* Tech stack grid */
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--separator);
-  }
-  .tech-cell {
-    background: var(--card);
-    padding: 14px 12px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-  }
-  .tech-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-  .tech-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-  .tech-type {
-    font-size: 10.5px;
-    color: var(--text-tertiary);
-    margin-top: 1px;
-  }
-
-  /* Language pills */
-  .lang-row {
-    display: flex;
-    gap: 8px;
-    padding: 14px 18px;
-    flex-wrap: wrap;
-  }
-  .lang-pill {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(0,0,0,0.05);
-    border-radius: 20px;
-    padding: 6px 12px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-  .lang-level {
-    font-size: 11px;
-    color: var(--text-tertiary);
-    font-weight: 400;
-  }
-
-  /* Certificate / badge row */
-  .cert-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 13px 18px;
-    border-bottom: 0.5px solid var(--separator);
-  }
-  .cert-row:last-child { border-bottom: none; }
-  .cert-badge {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .cert-info { flex: 1; }
-  .cert-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-  .cert-issuer {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 2px;
-  }
-  .cert-date {
-    font-size: 11.5px;
-    color: var(--text-tertiary);
-    white-space: nowrap;
-  }
-
-  /* Inline tag */
-  .tag {
-    display: inline-block;
-    background: rgba(0,122,255,0.1);
-    color: var(--blue);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 6px;
-    margin: 2px 2px 0 0;
-    letter-spacing: 0.01em;
-  }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    font-size: 12px;
-    color: rgba(255,255,255,0.4);
-    padding: 20px 0 0;
-    letter-spacing: 0.02em;
-  }
-
-  /* Animations */
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(0.85); }
-  }
-
-  .card:nth-child(1) { animation-delay: 0.05s; }
-  .card:nth-child(2) { animation-delay: 0.1s; }
-  .card:nth-child(3) { animation-delay: 0.15s; }
-  .card:nth-child(4) { animation-delay: 0.2s; }
-
-  .section-label:nth-child(odd) { animation-delay: 0.08s; }
-
-  @media (max-width: 500px) {
-    .tech-grid { grid-template-columns: repeat(2, 1fr); }
-    .page { padding: 40px 10px 60px; }
-  }
-</style>
+<link rel="stylesheet" href="index.css" >
 </head>
 <body>
 
@@ -439,7 +17,8 @@
   <!-- Profile Card -->
   <div class="profile-card">
     <div class="profile-top">
-      <div class="avatar">JL</div>
+      <img src="profile.jpeg" alt="profile" class="avatar" >
+      <!-- <div class="avatar">Joel</div> -->
       <div class="profile-info">
         <h1>Joel Liau Yu Herng</h1>
         <div class="role">Junior Software Engineer</div>
@@ -454,9 +33,15 @@
         <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
         +60 11 3321 6853
       </a>
-      <a href="/cdn-cgi/l/email-protection#3953565c55080e5550584c795e54585055175a5654" class="contact-chip">
+      <a href="mailto:joel17liau@gmail.com" class="contact-chip">
         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        <span class="__cf_email__" data-cfemail="f3999c969fc2c49f9a9286b3949e929a9fdd909c9e">[email&#160;protected]</span>
+        <span class="__cf_email__" data-cfemail="f3999c969fc2c49f9a9286b3949e929a9fdd909c9e">joel17liau@gmail.com</span>
+      </a>
+      <a href="https://github.com/J00ZzZ" class="contact-chip">
+        <svg viewBox="0 0 24 24" style="fill:currentColor;">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+        </svg>
+        Github
       </a>
       <span class="contact-chip">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -500,7 +85,7 @@
         <div class="cert-name">Hackathon Participant</div>
         <div class="cert-issuer">AI Banking Web Application — Built LLM-integrated banking platform with Next.js & React</div>
       </div>
-      <div class="cert-date">2024</div>
+      <div class="cert-date">2026</div>
     </div>
     <div class="cert-row">
       <div class="cert-badge" style="background:linear-gradient(135deg,#007aff,#5ac8fa);">🌊</div>
@@ -508,10 +93,10 @@
         <div class="cert-name">Web Piscine — 5 Day Program</div>
         <div class="cert-issuer">42 Kuala Lumpur — HTML, CSS, JavaScript fundamentals via peer-to-peer intensive</div>
       </div>
-      <div class="cert-date">2024</div>
+      <div class="cert-date">2026</div>
     </div>
     <div class="cert-row">
-      <div class="cert-badge" style="background:linear-gradient(135deg,#34c759,#30d158);">✅</div>
+      <div class="row-icon" style="background:#000;padding:2px;overflow:hidden;"><img src="data:image/png;base64,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" style="width:34px;height:34px;object-fit:cover;border-radius:8px;"></div>
       <div class="cert-info">
         <div class="cert-name">42 Core Curriculum</div>
         <div class="cert-issuer">Sunway University (42 KL) — Systems programming, C, Unix, algorithms</div>
